@@ -27,13 +27,15 @@ function getRandomJokeObj() {
 
 function showRandomJoke() {
   const el = document.getElementById('joke');
+  el.classList.add('loading');
   el.style.color = '#ffd700';
   el.textContent = 'لوستل کیږي...';
   setTimeout(() => {
     const j = getRandomJokeObj();
     el.textContent = formatJoke(j);
     el.style.color = '';
-  }, 150);
+    el.classList.remove('loading');
+  }, 800); // Slightly longer for better UX
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
