@@ -30,3 +30,46 @@ Notes:
 
 - All code uses the Python standard library — no external dependencies required.
 - If you'd like `pytest`, install it and convert the tests accordingly.
+
+Live Demo
+---------
+
+You can host this repository on GitHub Pages by enabling Pages in the repository settings and pointing it to the `main` branch (root). Once published the site will be available at:
+
+```
+https://<your-github-username>.github.io/Pashto-Joke-Generatory/
+```
+
+Replace `<your-github-username>` with your GitHub username. GitHub Pages must be enabled via the repository settings; I left the placeholder because Pages is configured on GitHub after pushing.
+# Pashto Joke Generator
+
+Simple static Pashto joke generator with a small Python utility and tests.
+
+Files of interest:
+
+- `index.html` — frontend UI (Pashto) that loads `jokes.json` and shows a random joke.
+- `jokes.json` — an array of joke objects (single or twopart).
+- `static/js/scripts.js` — frontend logic.
+- `generator.py` — small Python helper to pick a random joke.
+- `tests/run_tests.py` — lightweight test runner using plain asserts.
+
+How to run (static site):
+
+1. Start a simple HTTP server from the project root:
+
+```bash
+python -m http.server 8000
+```
+
+2. Open `http://localhost:8000` in your browser and click the button to get Pashto jokes.
+
+How to run tests:
+
+```bash
+python tests/run_tests.py
+```
+
+Notes:
+
+- All code uses the Python standard library — no external dependencies required.
+- If you'd like `pytest`, install it and convert the tests accordingly.

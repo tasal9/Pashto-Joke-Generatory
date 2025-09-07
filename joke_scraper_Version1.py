@@ -22,7 +22,8 @@ def scrape_rohi_jokes():
     scraped_jokes = []
 
     for article in joke_articles:
-        # The joke setup is in the <a> tag inside <h2>
+        # The joke setup is in the
+        # <a> tag inside <h2>
         setup_element = article.select_one("h2.post-title a")
         
         # The joke delivery is in the <p> tag inside the content div
