@@ -1,45 +1,75 @@
 :root{
-  --bg: #121214;
-  --card: #1f2937;
-  --accent: #60a5fa;
-  --text: #e6eef8;
+  --bg: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+  --card: #16213e;
+  --accent: #0f3460;
+  --accent-hover: #1a1a2e;
+  --text: #e94560;
+  --text-secondary: #ffffff;
+  --shadow: rgba(0, 0, 0, 0.5);
 }
-*{box-sizing:border-box}
+*{box-sizing:border-box;margin:0;padding:0}
 body{
-  margin:0;
-  font-family: "Noto Nastaliq Urdu", "Arial", sans-serif;
-  background:linear-gradient(180deg,var(--bg),#0b1220);
-  color:var(--text);
+  font-family: 'Noto Nastaliq Urdu', 'Arial', sans-serif;
+  background: var(--bg);
+  color: var(--text);
   min-height:100vh;
   display:flex;
   align-items:center;
   justify-content:center;
+  padding:20px;
 }
 main{
-  width:min(900px,94vw);
-  background:var(--card);
-  padding:28px;
-  border-radius:12px;
-  box-shadow:0 8px 30px rgba(2,6,23,0.6);
+  width:min(500px,90vw);
+  background: var(--card);
+  padding:40px;
+  border-radius:20px;
+  box-shadow: 0 10px 30px var(--shadow);
   text-align:center;
+  border: 2px solid var(--accent);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-h1{margin:0 0 12px 0}
+main:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px var(--shadow);
+}
+h1{
+  margin-bottom:20px;
+  font-size:2.5rem;
+  font-weight:700;
+  text-shadow: 2px 2px 4px var(--shadow);
+  color: var(--text-secondary);
+}
 #joke{
-  margin-top:18px;
-  font-size:1.25rem;
-  min-height:78px;
+  margin:30px 0;
+  font-size:1.5rem;
+  min-height:100px;
   white-space:pre-wrap;
-  transition:color 200ms ease-in-out;
+  background: rgba(255, 255, 255, 0.1);
+  padding:20px;
+  border-radius:10px;
+  border: 1px solid var(--accent);
+  transition: background 0.3s ease, color 0.3s ease;
+  color: var(--text-secondary);
 }
 button{
-  margin-top:20px;
-  padding:12px 22px;
-  background:var(--accent);
-  color:#07203a;
+  padding:15px 30px;
+  background: var(--accent);
+  color: var(--text-secondary);
   border:none;
-  border-radius:8px;
+  border-radius:25px;
+  font-size:1.2rem;
   font-weight:600;
   cursor:pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 5px 15px var(--shadow);
 }
-button:hover{filter:brightness(0.95)}
-.hint{opacity:0.7;font-size:0.9rem;margin-top:10px}
+button:hover{
+  background: var(--accent-hover);
+  transform: scale(1.05);
+}
+.hint{
+  opacity:0.8;
+  font-size:0.9rem;
+  margin-top:20px;
+  color: var(--text-secondary);
+}
