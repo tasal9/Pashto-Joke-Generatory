@@ -1,5 +1,7 @@
 # Pashto Joke Generator
 
+[![Python Tests](https://github.com/tasal9/Pashto-Joke-Generatory/actions/workflows/python-tests.yml/badge.svg)](https://github.com/tasal9/Pashto-Joke-Generatory/actions)
+
 Simple static Pashto joke generator with a small Python utility and tests.
 
 Files of interest:
@@ -31,16 +33,16 @@ Notes:
 - All code uses the Python standard library — no external dependencies required.
 - If you'd like `pytest`, install it and convert the tests accordingly.
 
-Live Demo
----------
+Live Demo (GitHub Pages)
+-------------------------
 
-You can host this repository on GitHub Pages by enabling Pages in the repository settings and pointing it to the `main` branch (root). Once published the site will be available at:
+After enabling GitHub Pages in repository settings and pointing it to the `main` branch (root), the site will be available at:
 
 ```
-https://<your-github-username>.github.io/Pashto-Joke-Generatory/
+https://tasal9.github.io/Pashto-Joke-Generatory/
 ```
 
-Replace `<your-github-username>` with your GitHub username. GitHub Pages must be enabled via the repository settings; I left the placeholder because Pages is configured on GitHub after pushing.
+If you prefer I can enable Pages via the CLI, but it may require additional repository permissions.
 # Pashto Joke Generator
 
 Simple static Pashto joke generator with a small Python utility and tests.
