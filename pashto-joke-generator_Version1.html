@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ps" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>د پښتو ټوکو جنراتور</title>
+  <style>
+    body {
+      font-family: 'Tahoma', 'Arial', sans-serif; /* A font that supports Pashto */
+      background: #282c34;
+      color: #fff;
+      text-align: center;
+      margin: 0;
+      padding: 40px;
+    }
+    #joke {
+      margin-top: 30px;
+      font-size: 1.6em;
+      line-height: 1.8;
+      min-height: 120px;
+      white-space: pre-wrap; /* To respect newlines in jokes */
+    }
+    button {
+      padding: 12px 28px;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1.2em;
+      margin-top: 20px;
+      font-family: 'Tahoma', 'Arial', sans-serif;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>😂 د پښتو ټوکو جنراتور</h1>
+  <div id="joke">د ټوکې لیدلو لپاره تڼۍ کېکاږئ!</div>
+  <button onclick="getJoke()">نوې ټوکه</button>
+
+  <script>
+    const pashtoJokes = [
+      {
+        setup: "ښوونکي له زده کوونکي وپوښتل:",
+        delivery: "که پنځه مڼې ولرې او درې ترې واخلې، څو به پاتې شي؟\n\nزده کوونکي ځواب ورکړ: همغه درې چې ما اخیستي دي."
+      },
+      {
+        setup: "ملا نصرالدین ته یو چا وویل:",
+        delivery: "ستا خره ورکه شوې ده.\n\nملا ځواب ورکړ: شکر دی چې زه پرې نه وم سپور، کنه زه به هم ورک شوی وم."
+      },
+      {
+        setup: "یو سړی ډاکټر ته ورغی، ډاکټر ورته وویل:",
+        delivery: "ته ليونی يې.\n\nسړي ځواب ورکړ: زه ليونی نه يم، يوازې لږ په غوسه يم."
+      },
+      {
+        setup: "پلار زوی ته:",
+        delivery: "که په امتحان کې ناکام شوې، بیا ما ته د 'پلار' غږ مه کوه.\n\nڅو ورځې وروسته پلار پوښتنه وکړه: د امتحان نتیجه دې څه شوه؟\nزوی ځواب ورکړ: بخښنه غواړم 'اکبر خانه'، خو زه ناکام شوم."
+      }
+    ];
+
+    function getJoke() {
+      const jokeDiv = document.getElementById('joke');
+      
+      // Get a random joke from the array
+      const randomIndex = Math.floor(Math.random() * pashtoJokes.length);
+      const randomJoke = pashtoJokes[randomIndex];
+
+      // Display the joke
+      jokeDiv.textContent = `${randomJoke.setup}\n\n${randomJoke.delivery}`;
+    }
+    
+    // Display the initial message in Pashto
+    document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById('joke').textContent = 'د ټوکې لیدلو لپاره تڼۍ کېکاږئ!';
+    });
+  </script>
+</body>
+</html>

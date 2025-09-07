@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Random Joke Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #282c34;
+      color: #fff;
+      text-align: center;
+      margin: 0;
+      padding: 40px;
+    }
+    #joke {
+      margin-top: 30px;
+      font-size: 1.4em;
+      min-height: 80px;
+      transition: color 0.2s;
+    }
+    button {
+      padding: 12px 28px;
+      background: #61dafb;
+      color: #222;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1.1em;
+      margin-top: 20px;
+    }
+    button:hover {
+      background: #21a1f3;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <h1>😂 Random Joke Generator</h1>
+  <div id="joke">Click the button to get a joke!</div>
+  <button onclick="getJoke()">Get Random Joke</button>
+
+  <script>
+    async function getJoke() {
+      const jokeDiv = document.getElementById('joke');
+      jokeDiv.style.color = '#ffd700';
+      jokeDiv.textContent = 'Loading...';
+      try {
+        const response = await fetch('https://v2.jokeapi.dev/joke/Any?safe-mode');
+        const data = await response.json();
+        if (data.type === 'single') {
+          jokeDiv.textContent = data.joke;
+        } else if (data.type === 'twopart') {
+          jokeDiv.textContent = `${data.setup}\n\n${data.delivery}`;
+        } else {
+          jokeDiv.textContent = 'No joke found!';
+        }
+        jokeDiv.style.color = '#fff';
+      } catch (error) {
+        jokeDiv.textContent = 'Failed to fetch joke.';
+        jokeDiv.style.color = '#f99';
+      }
+    }
+  </script>
+</body>
+</html>
