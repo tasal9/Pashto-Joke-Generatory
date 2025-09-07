@@ -1,41 +1,51 @@
 let JOKES = [];
+let currentJoke = null;
 
 async function loadJokes() {
   try {
     const res = await fetch('jokes.json');
     JOKES = await res.json();
+    // Show a joke on initial load
+    showRandomJoke();
   } catch (e) {
     console.error('Failed to load jokes.json', e);
-    JOKES = [];
+    const jokeEl = document.getElementById('joke');
+    jokeEl.textContent = 'د ټوکو په بارولو کې ستونزه وشوه. مهرباني وکړئ وروسته بیا هڅه وکړئ.';
   }
 }
 
 function formatJoke(j) {
-  if (!j) return 'د ټوکو ډیټا شتون نلري.';
+  if (!j) return 'یوه ټوکه هم پیدا نه شوه.';
   if (j.type === 'single') return j.joke;
   if (j.type === 'twopart') return `${j.setup}\n\n${j.delivery}`;
-  // backward compatibility: string
   if (typeof j === 'string') return j;
   return 'بې نومه ټوکه';
 }
 
 function getRandomJokeObj() {
   if (!Array.isArray(JOKES) || JOKES.length === 0) return null;
-  const idx = Math.floor(Math.random() * JOKES.length);
-  return JOKES[idx];
+  
+  let newJoke = null;
+  // Ensure we don't show the same joke twice in a row
+  do {
+    const idx = Math.floor(Math.random() * JOKES.length);
+    newJoke = JOKES[idx];
+  } while (JOKES.length > 1 && newJoke === currentJoke);
+  
+  currentJoke = newJoke;
+  return currentJoke;
 }
 
 function showRandomJoke() {
-  const el = document.getElementById('joke');
-  el.classList.add('loading');
-  el.style.color = '#ffd700';
-  el.textContent = 'لوستل کیږي...';
+  const jokeEl = document.getElementById('joke');
+  
+  jokeEl.classList.add('fade-out');
+  
   setTimeout(() => {
     const j = getRandomJokeObj();
-    el.textContent = formatJoke(j);
-    el.style.color = '';
-    el.classList.remove('loading');
-  }, 800); // Slightly longer for better UX
+    jokeEl.textContent = formatJoke(j);
+    jokeEl.classList.remove('fade-out');
+  }, 500); // Corresponds to the fade-out animation duration
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -43,5 +53,5 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.getElementById('get-joke').addEventListener('click', showRandomJoke);
 });
 
-// expose for console/tests
+// Expose for console/tests
 window._PJ = {loadJokes, getRandomJokeObj, formatJoke};

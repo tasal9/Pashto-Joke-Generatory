@@ -1,103 +1,132 @@
-:root{
-  --bg: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
-  --card: #16213e;
-  --accent: #0f3460;
-  --accent-hover: #1a1a2e;
-  --text: #e94560;
-  --text-secondary: #ffffff;
-  --shadow: rgba(0, 0, 0, 0.5);
+:root {
+  --bg-gradient: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+  --card-bg: rgba(0, 0, 0, 0.7);
+  --text-primary: #ffffff;
+  --text-secondary: #f1f1f1;
+  --accent-color: #ffc107;
+  --shadow-color: rgba(0, 0, 0, 0.6);
+  --border-color: rgba(255, 255, 255, 0.2);
 }
-*{box-sizing:border-box;margin:0;padding:0}
-body{
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
   font-family: 'Noto Nastaliq Urdu', 'Arial', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
+  background: var(--bg-gradient);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  direction: rtl;
 }
-main{
-  width:min(500px,90vw);
-  background: var(--card);
-  padding:40px;
-  border-radius:20px;
-  box-shadow: 0 10px 30px var(--shadow);
-  text-align:center;
-  border: 2px solid var(--accent);
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+main {
+  width: min(600px, 95vw);
+  background: var(--card-bg);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px var(--shadow-color);
+  text-align: center;
+  border: 1px solid var(--border-color);
+  backdrop-filter: blur(10px);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 main:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 40px var(--shadow);
+  transform: translateY(-10px);
+  box-shadow: 0 25px 45px var(--shadow-color);
 }
-h1{
-  margin-bottom:20px;
-  font-size:2.5rem;
-  font-weight:700;
-  text-shadow: 2px 2px 4px var(--shadow);
+
+h1 {
+  margin-bottom: 25px;
+  font-size: 2.8rem;
+  font-weight: 700;
+  text-shadow: 3px 3px 6px var(--shadow-color);
+  color: var(--accent-color);
+}
+
+#joke-container {
+  margin: 30px 0;
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 25px;
+  border-radius: 15px;
+  border: 1px solid var(--border-color);
+  transition: background 0.3s ease;
+}
+
+#joke {
+  font-size: 1.6rem;
+  line-height: 1.8;
+  white-space: pre-wrap;
   color: var(--text-secondary);
+  transition: opacity 0.5s ease-in-out;
 }
-#joke{
-  margin:30px 0;
-  font-size:1.5rem;
-  min-height:100px;
-  white-space:pre-wrap;
-  background: rgba(255, 255, 255, 0.1);
-  padding:20px;
-  border-radius:10px;
-  border: 1px solid var(--accent);
-  transition: background 0.3s ease, color 0.3s ease;
-  color: var(--text-secondary);
-  animation: fadeIn 0.5s ease-in-out;
+
+#joke.fade-out {
+  opacity: 0;
 }
-#joke.loading {
-  animation: pulse 1s infinite;
+
+button {
+  padding: 15px 35px;
+  background: var(--accent-color);
+  color: #000;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 20px var(--shadow-color);
+  text-transform: uppercase;
 }
-@keyframes pulse {
-  0% { opacity: 1; }
-  50% { opacity: 0.5; }
-  100% { opacity: 1; }
+
+button:hover {
+  background: #fff;
+  transform: scale(1.1);
+  box-shadow: 0 12px 25px var(--shadow-color);
 }
-button{
-  padding:15px 30px;
-  background: var(--accent);
-  color: var(--text-secondary);
-  border:none;
-  border-radius:25px;
-  font-size:1.2rem;
-  font-weight:600;
-  cursor:pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 5px 15px var(--shadow);
-}
-button:hover{
-  background: var(--accent-hover);
-  transform: scale(1.05);
-}
-.hint{
-  opacity:0.8;
-  font-size:0.9rem;
-  margin-top:20px;
+
+.hint {
+  opacity: 0.8;
+  font-size: 1rem;
+  margin-top: 25px;
   color: var(--text-secondary);
 }
 
 /* Mobile responsiveness */
 @media (max-width: 600px) {
   main {
-    padding: 20px;
-    width: 95vw;
+    padding: 25px;
   }
   h1 {
-    font-size: 2rem;
+    font-size: 2.2rem;
+  }
+  #joke-container {
+    padding: 20px;
   }
   #joke {
-    font-size: 1.2rem;
-    padding: 15px;
+    font-size: 1.3rem;
   }
   button {
-    padding: 12px 25px;
-    font-size: 1rem;
+    padding: 12px 30px;
+    font-size: 1.1rem;
   }
 }

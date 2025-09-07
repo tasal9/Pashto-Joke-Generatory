@@ -25,7 +25,11 @@ def test_randomness():
     seen = set()
     for _ in range(10):
         j = get_random_joke('jokes.json')
-        seen.add(j.get('joke') or (j.get('setup') + '|' + j.get('delivery')))
+        seen.add(
+            j.get('joke') or (
+                (j.get('setup') or '') + '|' + (j.get('delivery') or '')
+            )
+        )
     assert len(seen) >= 2, 'Randomness: expected at least 2 different jokes in 10 picks'
 
 
