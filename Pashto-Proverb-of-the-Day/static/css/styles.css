@@ -1,14 +1,16 @@
 :root {
-  --bg-color: #f4f1eb;
-  --card-bg: #ffffff;
-  --text-color: #3a3a3a;
-  --accent-color: #8c7851;
-  --accent-hover: #7a6841;
-  --shadow-color: rgba(0, 0, 0, 0.1);
+  --bg-color: #111827;
+  --card-bg: #1F2937;
+  --text-color: #F9FAFB;
+  --accent-color: #38BDF8;
+  --accent-hover: #7DD3FC;
+  --secondary-text: #9CA3AF;
+  --border-color: #374151;
+  --shadow-color: rgba(0, 0, 0, 0.25);
 }
 
 body {
-  font-family: 'Cardo', serif;
+  font-family: 'Inter', sans-serif;
   background-color: var(--bg-color);
   color: var(--text-color);
   display: flex;
@@ -24,11 +26,16 @@ body {
   max-width: 700px;
   width: 100%;
   background-color: var(--card-bg);
-  border-radius: 15px;
+  border-radius: 16px;
   padding: 40px;
-  box-shadow: 0 10px 25px var(--shadow-color);
+  box-shadow: 0 10px 30px var(--shadow-color);
   text-align: center;
-  border: 1px solid #e0dace;
+  border: 1px solid var(--border-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.container:hover {
+  transform: translateY(-5px);
 }
 
 header h1 {
@@ -41,6 +48,10 @@ header h1 {
 
 #proverb-card {
   margin-bottom: 30px;
+  padding: 20px;
+  background-color: var(--bg-color);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
 }
 
 #proverb-text .pashto {
@@ -49,19 +60,21 @@ header h1 {
   font-weight: 700;
   margin-bottom: 15px;
   line-height: 1.6;
+  color: var(--text-color);
 }
 
 #proverb-text .translation {
   font-style: italic;
   font-size: 1.2rem;
-  color: #777;
+  color: var(--secondary-text);
   margin-bottom: 25px;
 }
 
 #proverb-meaning {
   font-size: 1.1rem;
   line-height: 1.7;
-  border-top: 1px solid #e0dace;
+  color: var(--secondary-text);
+  border-top: 1px solid var(--border-color);
   padding-top: 20px;
 }
 
@@ -74,11 +87,12 @@ header h1 {
 .action-bar button {
   font-family: 'Noto Nastaliq Urdu', sans-serif;
   background-color: var(--accent-color);
-  color: white;
+  color: var(--bg-color);
   border: none;
   border-radius: 8px;
   padding: 12px 20px;
   font-size: 1rem;
+  font-weight: 700;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
   display: flex;
